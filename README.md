@@ -33,7 +33,9 @@ missing piece — no dashboard, no hosted service, just tests.
 
 - **Provider-agnostic**: the system under test and the judge both work through
   `Microsoft.Extensions.AI.IChatClient` — Anthropic, OpenAI, Azure, Ollama.
-- **CI-native**: LLM tests auto-skip without API keys; baselines gate regressions (roadmap).
+- **CI-native**: LLM tests auto-skip without API keys; committed baseline snapshots gate
+  regressions — `report.VerifyBaseline("bot.baseline.json")` fails the build when pass
+  rate drops, names the newly failing cases, and updates via `NETEVAL_UPDATE_BASELINES=1`.
 - **Honest about non-determinism**: `[LlmFact(Runs = 5, PassThreshold = 0.8)]` runs a test
   N times with a pass threshold instead of pretending LLM outputs are deterministic.
 - **Dataset-driven**: point `EvalRunner` at a JSONL file of cases and get pass rate,
@@ -43,10 +45,14 @@ missing piece — no dashboard, no hosted service, just tests.
 var report = await new EvalRunner(new ClaudeJudge())
     .RunAsync(JsonlDataset.Load("support_cases.jsonl"), bot.ReplyAsync);
 
-Assert.True(report.PassRate >= 0.9, report.ToString());
+report.VerifyBaseline("support_bot.baseline.json");
 // Eval run: 8/10 passed (80 %), mean score 0.84
 // Mean SUT latency: 412 ms; judge usage: 12345 in / 890 out tokens
-//   FAIL case #3 "I want a refund..." — score 0.20: Never mentions the refund policy.
+//
+// On regression, the test fails with the diff against the committed baseline:
+// BaselineRegressionException : Eval run regressed against baseline '...':
+//   pass rate regressed: 90.0% (9/10) -> 80.0% (8/10), tolerance 0.0%
+//   newly failing: "I want a refund..." — score 0.20: Never mentions the refund policy.
 ```
 
 ## Packages
@@ -68,7 +74,7 @@ Early development — pre-alpha, API will change.
 - [x] `ClaudeJudge` wired to the Anthropic SDK
 - [x] Retry semantics: `[LlmFact(Runs = 5, PassThreshold = 0.8)]`
 - [x] Dataset runner with pass rate, cost, and latency reporting
-- [ ] Baseline snapshots + CI regression gating (week 3)
+- [x] Baseline snapshots + CI regression gating
 - [ ] NuGet release (week 4)
 
 ## License

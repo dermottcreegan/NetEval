@@ -23,18 +23,19 @@ public class SupportBotEvals
             judge: new ClaudeJudge());
     }
 
-    // Dataset-driven: run every case in the JSONL file, get pass rate, judge cost, and latency.
+    // Dataset-driven: run every case in the JSONL file, get pass rate, judge cost, and latency,
+    // then gate against the committed baseline — CI fails if quality regresses.
     [LlmFact]
-    public async Task Support_bot_meets_quality_bar_across_dataset()
+    public async Task Support_bot_does_not_regress_against_baseline()
     {
         var cases = JsonlDataset.Load("support_cases.jsonl");
 
         var report = await new EvalRunner(new ClaudeJudge())
             .RunAsync(cases, message => Task.FromResult(FakeSupportBot.Reply(message)));
 
-        // The report string includes pass rate, mean score, latency, judge token usage,
-        // and the judge's reasoning for every failing case.
-        Assert.True(report.PassRate >= 0.99, report.ToString());
+        // First run creates support_bot.baseline.json next to this file — commit it.
+        // After an intentional change, re-run with NETEVAL_UPDATE_BASELINES=1 to accept.
+        report.VerifyBaseline("support_bot.baseline.json");
     }
 }
 
