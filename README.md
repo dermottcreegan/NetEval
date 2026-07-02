@@ -34,8 +34,20 @@ missing piece — no dashboard, no hosted service, just tests.
 - **Provider-agnostic**: the system under test and the judge both work through
   `Microsoft.Extensions.AI.IChatClient` — Anthropic, OpenAI, Azure, Ollama.
 - **CI-native**: LLM tests auto-skip without API keys; baselines gate regressions (roadmap).
-- **Honest about non-determinism**: run tests N times with a pass threshold instead of
-  pretending LLM outputs are deterministic (roadmap).
+- **Honest about non-determinism**: `[LlmFact(Runs = 5, PassThreshold = 0.8)]` runs a test
+  N times with a pass threshold instead of pretending LLM outputs are deterministic.
+- **Dataset-driven**: point `EvalRunner` at a JSONL file of cases and get pass rate,
+  judge token usage, and latency — failures include the judge's reasoning.
+
+```csharp
+var report = await new EvalRunner(new ClaudeJudge())
+    .RunAsync(JsonlDataset.Load("support_cases.jsonl"), bot.ReplyAsync);
+
+Assert.True(report.PassRate >= 0.9, report.ToString());
+// Eval run: 8/10 passed (80 %), mean score 0.84
+// Mean SUT latency: 412 ms; judge usage: 12345 in / 890 out tokens
+//   FAIL case #3 "I want a refund..." — score 0.20: Never mentions the refund policy.
+```
 
 ## Packages
 
@@ -54,8 +66,8 @@ Early development — pre-alpha, API will change.
 - [x] `[LlmFact]` with API-key auto-skip
 - [x] JSONL datasets
 - [x] `ClaudeJudge` wired to the Anthropic SDK
-- [ ] Retry semantics: `[LlmFact(Runs = 5, PassThreshold = 0.8)]` (week 2)
-- [ ] Dataset runner with pass rate, cost, and latency reporting (week 2)
+- [x] Retry semantics: `[LlmFact(Runs = 5, PassThreshold = 0.8)]`
+- [x] Dataset runner with pass rate, cost, and latency reporting
 - [ ] Baseline snapshots + CI regression gating (week 3)
 - [ ] NuGet release (week 4)
 

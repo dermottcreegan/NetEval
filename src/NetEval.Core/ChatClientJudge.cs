@@ -14,6 +14,7 @@ public sealed class ChatClientJudge(IChatClient chatClient) : IJudge
             $$"""
             You are a strict evaluator. Judge whether the OUTPUT satisfies the CRITERIA.
             {{(request.Input is null ? "" : $"INPUT (what produced the output):\n{request.Input}\n")}}
+            {{(request.Expected is null ? "" : $"REFERENCE ANSWER (for comparison):\n{request.Expected}\n")}}
             CRITERIA:
             {{request.Criteria}}
 
@@ -26,6 +27,9 @@ public sealed class ChatClientJudge(IChatClient chatClient) : IJudge
 
         var response = await chatClient.GetResponseAsync(prompt, cancellationToken: cancellationToken);
 
-        return JudgeVerdictParser.Parse(response.Text);
+        var verdict = JudgeVerdictParser.Parse(response.Text);
+        return response.Usage is { } usage
+            ? verdict with { Usage = new JudgeUsage(usage.InputTokenCount ?? 0, usage.OutputTokenCount ?? 0) }
+            : verdict;
     }
 }

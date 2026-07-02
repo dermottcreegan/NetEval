@@ -1,0 +1,3 @@
+{"input": "I want a refund, my order arrived broken.", "criteria": "acknowledges the problem, mentions the 30-day refund policy, and gives no legal advice"}
+{"input": "My package never arrived and it's been two weeks.", "criteria": "apologizes and commits to a concrete next step with a timeframe"}
+{"input": "Can I get a refund for a gift I received?", "criteria": "acknowledges the request and mentions the 30-day refund policy"}

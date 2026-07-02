@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\src\NetEval.Judges.Claude\NetEval.Judges.Claude.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="support_cases.jsonl" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

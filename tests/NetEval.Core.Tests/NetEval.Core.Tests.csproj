@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\NetEval.Core\NetEval.Core.csproj" />
+    <ProjectReference Include="..\..\src\NetEval.Xunit\NetEval.Xunit.csproj" />
   </ItemGroup>
 
 </Project>
