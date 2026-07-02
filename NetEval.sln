@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{1ED8A5B0-D1C7-4B4C-AE30-DC909B04A77A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportBot.Evals", "samples\SupportBot.Evals\SupportBot.Evals.csproj", "{A6637C4B-C954-48DC-9035-DC69A13AD131}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{825B998F-5360-4553-A80E-7FED7BBB6D69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEval.Core", "src\NetEval.Core\NetEval.Core.csproj", "{73572115-094E-44D0-BE7E-EFB10AC7919F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEval.Judges.Claude", "src\NetEval.Judges.Claude\NetEval.Judges.Claude.csproj", "{C6D7DA3C-6C86-4E26-899D-D8388350720A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEval.Xunit", "src\NetEval.Xunit\NetEval.Xunit.csproj", "{2607C9DD-2534-40A1-9CC0-A03937982D3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{156475D2-E962-42C2-BAAC-A03B6F1BACB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetEval.Core.Tests", "tests\NetEval.Core.Tests\NetEval.Core.Tests.csproj", "{B07D11FC-74A1-457C-942C-63B5E3C817F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6637C4B-C954-48DC-9035-DC69A13AD131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6637C4B-C954-48DC-9035-DC69A13AD131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6637C4B-C954-48DC-9035-DC69A13AD131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6637C4B-C954-48DC-9035-DC69A13AD131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73572115-094E-44D0-BE7E-EFB10AC7919F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73572115-094E-44D0-BE7E-EFB10AC7919F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73572115-094E-44D0-BE7E-EFB10AC7919F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73572115-094E-44D0-BE7E-EFB10AC7919F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D7DA3C-6C86-4E26-899D-D8388350720A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D7DA3C-6C86-4E26-899D-D8388350720A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D7DA3C-6C86-4E26-899D-D8388350720A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D7DA3C-6C86-4E26-899D-D8388350720A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2607C9DD-2534-40A1-9CC0-A03937982D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2607C9DD-2534-40A1-9CC0-A03937982D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2607C9DD-2534-40A1-9CC0-A03937982D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2607C9DD-2534-40A1-9CC0-A03937982D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B07D11FC-74A1-457C-942C-63B5E3C817F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07D11FC-74A1-457C-942C-63B5E3C817F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07D11FC-74A1-457C-942C-63B5E3C817F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07D11FC-74A1-457C-942C-63B5E3C817F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6637C4B-C954-48DC-9035-DC69A13AD131} = {1ED8A5B0-D1C7-4B4C-AE30-DC909B04A77A}
+		{73572115-094E-44D0-BE7E-EFB10AC7919F} = {825B998F-5360-4553-A80E-7FED7BBB6D69}
+		{C6D7DA3C-6C86-4E26-899D-D8388350720A} = {825B998F-5360-4553-A80E-7FED7BBB6D69}
+		{2607C9DD-2534-40A1-9CC0-A03937982D3C} = {825B998F-5360-4553-A80E-7FED7BBB6D69}
+		{B07D11FC-74A1-457C-942C-63B5E3C817F1} = {156475D2-E962-42C2-BAAC-A03B6F1BACB7}
+	EndGlobalSection
+EndGlobal

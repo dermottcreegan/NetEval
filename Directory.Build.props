@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Authors>Dermott Creegan</Authors>
+    <Version>0.1.0-alpha</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Test your AI features like you test your code — an LLM eval framework for .NET that plugs into xUnit and CI.</Description>
+  </PropertyGroup>
+</Project>
