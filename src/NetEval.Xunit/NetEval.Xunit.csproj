@@ -16,6 +16,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Description>xUnit integration for NetEval — the [LlmFact] attribute with API-key auto-skip and Runs/PassThreshold retry semantics for non-deterministic LLM tests.</Description>
   </PropertyGroup>
 
 </Project>

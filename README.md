@@ -55,12 +55,22 @@ report.VerifyBaseline("support_bot.baseline.json");
 //   newly failing: "I want a refund..." — score 0.20: Never mentions the refund policy.
 ```
 
+## Install
+
+```bash
+dotnet add package NetEval.Xunit          # [LlmFact] + assertions (pulls in NetEval.Core)
+dotnet add package NetEval.Judges.Claude  # default judge backed by the Anthropic SDK
+```
+
+Set `ANTHROPIC_API_KEY` in your environment (and as a CI secret when you want evals to
+run in CI — without it, LLM tests skip and the build stays green).
+
 ## Packages
 
 | Package | Purpose |
 |---|---|
-| `NetEval.Core` | Judges, semantic assertions, datasets |
-| `NetEval.Xunit` | `[LlmFact]` attribute and xUnit integration |
+| `NetEval.Core` | Judges, semantic assertions, dataset runner, baselines |
+| `NetEval.Xunit` | `[LlmFact]` attribute with retry semantics |
 | `NetEval.Judges.Claude` | Default judge backed by the official Anthropic C# SDK |
 
 ## Status / Roadmap
@@ -75,7 +85,8 @@ Early development — pre-alpha, API will change.
 - [x] Retry semantics: `[LlmFact(Runs = 5, PassThreshold = 0.8)]`
 - [x] Dataset runner with pass rate, cost, and latency reporting
 - [x] Baseline snapshots + CI regression gating
-- [ ] NuGet release (week 4)
+- [x] NuGet packaging + publish-on-tag release workflow
+- [ ] First public release (`v0.1.0-alpha.1` tag once the GitHub repo is up)
 
 ## License
 

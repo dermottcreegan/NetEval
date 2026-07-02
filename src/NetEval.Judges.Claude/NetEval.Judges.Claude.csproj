@@ -12,6 +12,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Description>Default NetEval judge backed by the official Anthropic C# SDK — evaluate outputs with Claude via one line of setup.</Description>
   </PropertyGroup>
 
 </Project>
