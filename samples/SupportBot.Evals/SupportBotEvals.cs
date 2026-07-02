@@ -8,8 +8,7 @@ namespace SupportBot.Evals;
 /// <summary>
 /// The demo everyone copies: eval a support-bot reply against natural-language criteria.
 /// [LlmFact] auto-skips when ANTHROPIC_API_KEY is not set, so this compiles and runs green
-/// everywhere. NOTE: ClaudeJudge is a week-1 stub — this test will throw NotImplementedException
-/// until it's wired to the Anthropic SDK.
+/// everywhere; with a key set it calls Claude as the judge.
 /// </summary>
 public class SupportBotEvals
 {

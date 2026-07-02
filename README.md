@@ -53,7 +53,7 @@ Early development — pre-alpha, API will change.
 - [x] Provider-agnostic `ChatClientJudge` over `IChatClient`
 - [x] `[LlmFact]` with API-key auto-skip
 - [x] JSONL datasets
-- [ ] `ClaudeJudge` wired to the Anthropic SDK (week 1)
+- [x] `ClaudeJudge` wired to the Anthropic SDK
 - [ ] Retry semantics: `[LlmFact(Runs = 5, PassThreshold = 0.8)]` (week 2)
 - [ ] Dataset runner with pass rate, cost, and latency reporting (week 2)
 - [ ] Baseline snapshots + CI regression gating (week 3)
