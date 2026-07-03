@@ -5,6 +5,10 @@
 
 # dotenv files
 .env
+.env.*
+
+# Local appsettings overrides
+appsettings.*.Local.json
 
 # Local working notes, not part of the project
 conversations/
