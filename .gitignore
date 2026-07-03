@@ -6,6 +6,9 @@
 # dotenv files
 .env
 
+# Local working notes, not part of the project
+conversations/
+
 # User-specific files
 *.rsuser
 *.suo
