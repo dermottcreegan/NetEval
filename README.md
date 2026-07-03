@@ -59,6 +59,10 @@ report.VerifyBaseline("support_bot.baseline.json");
 
 ## Install
 
+> **Note:** Packages are not yet published to NuGet. The `v0.1.0-alpha.1` release is imminent 45
+until then, clone the repo and reference the projects directly, or build locally with `dotnet pack`.
+Track the release [here](https://github.com/dermottcreegan/NetEval/releases).
+
 ```bash
 dotnet add package NetEval.Xunit          # [LlmFact] + assertions (pulls in NetEval.Core)
 dotnet add package NetEval.Judges.Claude  # default judge backed by the Anthropic SDK
