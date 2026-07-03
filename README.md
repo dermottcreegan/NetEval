@@ -1,5 +1,7 @@
 # NetEval
 
+[![CI](https://github.com/dermottcreegan/NetEval/actions/workflows/ci.yml/badge.svg)](https://github.com/dermottcreegan/NetEval/actions/workflows/ci.yml)
+
 **Test your AI features like you test your code.**
 
 NetEval is an LLM eval framework for .NET that plugs into xUnit and your CI pipeline.
