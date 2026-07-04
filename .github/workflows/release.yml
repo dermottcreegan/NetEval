@@ -2,11 +2,17 @@ name: Release
 
 # Publishes the packages to NuGet when a version tag is pushed:
 #   git tag v0.1.0-alpha.1 && git push origin v0.1.0-alpha.1
-# Requires the NUGET_API_KEY repository secret (nuget.org API key scoped to push).
+# Auth is nuget.org Trusted Publishing (OIDC): a policy on the dermott.creegan
+# account trusts this repo + workflow file, and the NuGet/login step exchanges
+# the runner's OIDC token for a short-lived push key. No stored secret.
 
 on:
   push:
     tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write # required for the OIDC exchange in the NuGet/login step
 
 jobs:
   publish:
@@ -34,9 +40,15 @@ jobs:
       - name: Pack
         run: dotnet pack --no-build --configuration Release /p:Version=$VERSION --output packages
 
+      - name: NuGet login (OIDC -> short-lived API key)
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: dermott.creegan
+
       - name: Push to NuGet
         run: >
           dotnet nuget push "packages/*.nupkg"
-          --api-key "${{ secrets.NUGET_API_KEY }}"
+          --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
           --source https://api.nuget.org/v3/index.json
           --skip-duplicates
