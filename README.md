@@ -59,10 +59,6 @@ report.VerifyBaseline("support_bot.baseline.json");
 
 ## Install
 
-> **Note:** Packages are not yet published to NuGet. The `v0.1.0-alpha.1` release is imminent 45
-until then, clone the repo and reference the projects directly, or build locally with `dotnet pack`.
-Track the release [here](https://github.com/dermottcreegan/NetEval/releases).
-
 ```bash
 dotnet add package NetEval.Xunit          # [LlmFact] + assertions (pulls in NetEval.Core)
 dotnet add package NetEval.Judges.Claude  # default judge backed by the Anthropic SDK
@@ -92,7 +88,7 @@ Early development — pre-alpha, API will change.
 - [x] Dataset runner with pass rate, cost, and latency reporting
 - [x] Baseline snapshots + CI regression gating
 - [x] NuGet packaging + publish-on-tag release workflow
-- [ ] First public release (`v0.1.0-alpha.1` tag once the GitHub repo is up)
+- [x] First public release: [`v0.1.0-alpha.1`](https://github.com/dermottcreegan/NetEval/releases/tag/v0.1.0-alpha.1) on [NuGet](https://www.nuget.org/packages/NetEval.Core)
 
 ## License
 
